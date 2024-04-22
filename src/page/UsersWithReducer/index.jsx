@@ -5,8 +5,10 @@ const url = "https://jsonplaceholder.typicode.com/users/";
 
 const UsersWithReducerPage = ({}) => {
   useEffect(() => {
-    const [data, setData] = useState();
-    axios.get(url).then(({ data }) => {});
+    const [users, setUsers] = useState([]);
+    axios.get(url).then(({ data }) => {
+setUsers(data)
+    });
   }, []);
   return <div>UsersWithReducerPage</div>;
 };
