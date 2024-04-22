@@ -4,12 +4,22 @@ import { useEffect } from "react";
 const url = "https://jsonplaceholder.typicode.com/users/";
 
 const UsersWithReducerPage = ({}) => {
+  const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    const [users, setUsers] = useState([]);
     axios.get(url).then(({ data }) => {
       setUsers(data);
     });
   }, []);
+
+  const onEdit = (id) => {
+
+  };
+  const onDelete = (id) => {
+    setUsers(users.filter((user)=> user.id !== id))
+  };
+
+
   return (
     <div>
       {users.map(({ id, username }) => {
@@ -17,8 +27,9 @@ const UsersWithReducerPage = ({}) => {
           <div key={id}>
             <p>
               {username}
-              <button>✏</button>
-              </p>
+              <button onClick={()=>{onEdit(id)}}>✏</button>
+              <button onClick={()=>{onDelete(id)}}>❌</button>
+            </p>
           </div>
         );
       })}
