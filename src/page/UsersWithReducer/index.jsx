@@ -1,15 +1,14 @@
-import axios from "axios"
-import { useEffect } from "react"
-const url = 'https://jsonplaceholder.typicode.com/users/'
-
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+const url = "https://jsonplaceholder.typicode.com/users/";
 
 const UsersWithReducerPage = ({}) => {
-  useEffect(()=>{
-axios.get(url)
-  },[])
-  return (
-    <div>UsersWithReducerPage</div>
-  )
-}
+  useEffect(() => {
+    const [data, setData] = useState();
+    axios.get(url).then(({ data }) => {});
+  }, []);
+  return <div>UsersWithReducerPage</div>;
+};
 
-export default UsersWithReducerPage
+export default UsersWithReducerPage;
