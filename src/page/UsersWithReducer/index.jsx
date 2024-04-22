@@ -13,12 +13,18 @@ const UsersWithReducerPage = ({}) => {
   }, []);
 
   const onEdit = (id) => {
-
+    setUsers(
+      users.map((user) => {
+        if (user.id === id) {
+          return { ...user, username: prompt("yeni adi daxil edin") };
+        }
+        return user;
+      })
+    );
   };
   const onDelete = (id) => {
-    setUsers(users.filter((user)=> user.id !== id))
+    setUsers(users.filter((user) => user.id !== id));
   };
-
 
   return (
     <div>
@@ -27,8 +33,20 @@ const UsersWithReducerPage = ({}) => {
           <div key={id}>
             <p>
               {username}
-              <button onClick={()=>{onEdit(id)}}>✏</button>
-              <button onClick={()=>{onDelete(id)}}>❌</button>
+              <button
+                onClick={() => {
+                  onEdit(id);
+                }}
+              >
+                ✏
+              </button>
+              <button
+                onClick={() => {
+                  onDelete(id);
+                }}
+              >
+                ❌
+              </button>
             </p>
           </div>
         );
