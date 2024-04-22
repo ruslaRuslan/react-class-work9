@@ -1,29 +1,10 @@
 import axios from "axios";
-import { useReducer } from "react";
-import { useEffect } from "react";
+import { useReducer, useEffect } from "react";
+import usersReducer from "../../reducers/usersReducer";
 const url = "https://jsonplaceholder.typicode.com/users/";
 
-const reducer = (users, action) => {
-  switch (action.type) {
-    case "getusers":
-      return action.payload;
-    case "deleteLast":
-      return users.slice(1, -1);
-    case "edit":
-      return users.map((user) => {
-        if (user.id === action.payload) {
-          return { ...user, username: prompt("yeni adi daxil edin") };
-        }
-        return user;
-      });
-    case "delete":
-      return users.filter((user) => user.id !== action.payload);
-
-  }
-};
-
 const UsersWithReducerPage = ({}) => {
-  const [users, dispatcher] = useReducer(reducer, []);
+  const [users, dispatcher] = useReducer(usersReducer, []);
 
   useEffect(() => {
     axios.get(url).then(({ data }) => {
@@ -31,31 +12,14 @@ const UsersWithReducerPage = ({}) => {
     });
   }, []);
 
-  const onEdit = (id) => {
-    dispatcher({ type: "edit", payload: id });
-  };
-  const onDelete = (id) => {
-    dispatcher({ type: "delete", payload: id });
-  };
-
+  const onEdit = (id) => dispatcher({ type: "edit", payload: id });
+  const onDelete = (id) => dispatcher({ type: "delete", payload: id });
   const onAddUser = () => {
-    setUsers([
-      ...users,
-      { id: +users.length + 1, username: prompt("yeni user elave et") },
-    ]);
+    const user = prompt("ad daxil edin");
+    dispatcher({ type: "adduser", payload: user });
   };
-
-  const onDeleteFirst = () => {
-    dispatcher({ type: "deleteFirst" });
-    
-  };
-
-  const onDeleteLast = () => {
-    dispatcher({ type: "deleteLast" });
-    
-  };
-
-
+  const onDeleteFirst = () => dispatcher({ type: "deleteFirst" });
+  const onDeleteLast = () => dispatcher({ type: "deleteLast" });
   return (
     <div>
       <button onClick={onDeleteFirst}>delete first</button>
@@ -87,5 +51,4 @@ const UsersWithReducerPage = ({}) => {
     </div>
   );
 };
-
 export default UsersWithReducerPage;
