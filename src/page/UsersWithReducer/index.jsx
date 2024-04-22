@@ -1,8 +1,12 @@
+import { useEffect } from "react"
 
-const UserReducerPage = () => {
+const UsersWithReducerPage = ({}) => {
+  useEffect(()=>{
+
+  },[])
   return (
-    <div>UserReducerPage</div>
+    <div>UsersWithReducerPage</div>
   )
 }
 
-export default UserReducerPage
+export default UsersWithReducerPage
