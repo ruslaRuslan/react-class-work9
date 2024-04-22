@@ -15,7 +15,10 @@ const UsersWithReducerPage = ({}) => {
       {users.map(({ id, username }) => {
         return (
           <div key={id}>
-            <p>{username}</p>
+            <p>
+              {username}
+              <button>✏</button>
+              </p>
           </div>
         );
       })}
