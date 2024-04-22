@@ -7,10 +7,20 @@ const UsersWithReducerPage = ({}) => {
   useEffect(() => {
     const [users, setUsers] = useState([]);
     axios.get(url).then(({ data }) => {
-setUsers(data)
+      setUsers(data);
     });
   }, []);
-  return <div>UsersWithReducerPage</div>;
+  return (
+    <div>
+      {users.map(({ id, username }) => {
+        return (
+          <div key={id}>
+            <p>{username}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default UsersWithReducerPage;
