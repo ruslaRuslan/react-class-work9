@@ -30,12 +30,17 @@ const UsersWithReducerPage = ({}) => {
     setUsers([...users, {id:+users.length+1, username:prompt('yeni user elave et')}])
   }
 
+  const onDeleteLast =()=>{
+    setUsers(users.slice(0, users.length - 1))
+  }
+
   return (
     <div>
       <button
-      
+      onClick={onDeleteLast}
+      >delete Last</button>
+      <button
       onClick={onAddUser}
-
       >user elave et</button>
       {users.map(({ id, username }) => {
         return (
