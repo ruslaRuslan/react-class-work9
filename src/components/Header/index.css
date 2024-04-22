@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.homeAboutContact{
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   border: 2px solid red;
+   padding: 1rem;
+}
+
+.homeAboutContact *{
+   text-decoration: none;
+   color: red;
+   font-size: 1.5rem;
+}

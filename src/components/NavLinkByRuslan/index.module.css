@@ -1,0 +1,9 @@
+.link{
+    color: #fff;
+    background-color: blue;
+}
+
+.homeAboutContact{
+    display: flex;
+    justify-content: space-around;
+}
