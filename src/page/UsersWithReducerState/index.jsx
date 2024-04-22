@@ -56,7 +56,6 @@ const UsersWithReducerPage = ({}) => {
   };
 
 
-
   return (
     <div>
       <button onClick={onDeleteFirst}>delete first</button>
