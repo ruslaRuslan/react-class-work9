@@ -26,8 +26,17 @@ const UsersWithReducerPage = ({}) => {
     setUsers(users.filter((user) => user.id !== id));
   };
 
+  const onAddUser = ()=>{
+    setUsers([...users, {id:+users.length+1, username:prompt('yeni user elave et')}])
+  }
+
   return (
     <div>
+      <button
+      
+      onClick={onAddUser}
+
+      >user elave et</button>
       {users.map(({ id, username }) => {
         return (
           <div key={id}>
