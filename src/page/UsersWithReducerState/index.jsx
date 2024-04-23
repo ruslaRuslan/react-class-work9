@@ -5,7 +5,6 @@ const url = "https://jsonplaceholder.typicode.com/users/";
 
 const UsersWithReducerPage = ({}) => {
   const [users, dispatcher] = useReducer(usersReducer, []);
-
   useEffect(() => {
     axios.get(url).then(({ data }) => {
       dispatcher({ type: "getusers", payload: data });

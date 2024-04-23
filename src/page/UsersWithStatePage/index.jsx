@@ -75,14 +75,3 @@ const UsersWithStatePage = ({}) => {
 };
 
 export default UsersWithStatePage;
-
-
-
-
-
-
-
-
-
-
-
